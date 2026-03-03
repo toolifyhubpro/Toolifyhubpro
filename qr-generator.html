@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QR Code Generator - ToolifyHubPro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family:Arial;text-align:center;padding:20px;">
+
+<h2>QR Code Generator</h2>
+<input type="text" id="qrText" placeholder="Enter text"><br><br>
+<div id="qrcode"></div><br>
+<button onclick="generateQR()">Generate</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+function generateQR(){
+  document.getElementById("qrcode").innerHTML="";
+  new QRCode(document.getElementById("qrcode"), 
+  document.getElementById("qrText").value);
+}
+</script>
+
+</body>
+</html>
