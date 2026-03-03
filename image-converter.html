@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Converter - ToolifyHubPro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family:Arial;text-align:center;padding:20px;">
+
+<h2>Image Converter (JPG / PNG)</h2>
+<input type="file" id="imageInput" accept="image/*"><br><br>
+<button onclick="convertImage()">Convert</button><br><br>
+<a id="downloadLink"></a>
+
+<script>
+function convertImage(){
+  const file = document.getElementById("imageInput").files[0];
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const img = new Image();
+    img.onload = function(){
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      const link = document.getElementById("downloadLink");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "converted.png";
+      link.innerText = "Download Converted Image";
+    }
+    img.src = e.target.result;
+  }
+  reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
