@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text to PDF - ToolifyHubPro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family:Arial;text-align:center;padding:20px;">
+
+<h2>Text to PDF Converter</h2>
+<textarea id="text" rows="10" cols="30"></textarea><br><br>
+<button onclick="downloadPDF()">Download PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function downloadPDF(){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.text(document.getElementById("text").value, 10, 10);
+  doc.save("file.pdf");
+}
+</script>
+
+</body>
+</html>
